@@ -1,37 +1,41 @@
 ﻿using CoPilot.Interfaces.EventArgs;
+using CoPilot.Interfaces.Types;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace CoPilot.Interfaces
 {
+    public enum DownloadStatus
+    {
+        Complete,
+        InProgress,
+        Fail
+    }
+
     public interface NetClient
     {
         #region EVENTS
 
-        event EventHandler<UploadEventArgs> UploadComplete;
-        event EventHandler<ProgressEventArgs> UploadProgress;
-        event EventHandler<ExceptionEventArgs> UploadError;
-
-        event EventHandler<UriEventArgs> GetComplete;
-        event EventHandler<ExceptionEventArgs> GetError;
-
-        event EventHandler DeleteComplete;
-        event EventHandler<ExceptionEventArgs> DeleteError;
-
-        event EventHandler<StreamEventArgs> DownloadComplete;
-        event EventHandler<ExceptionEventArgs> DownloadError;
+        event EventHandler<StateEventArgs> State;
+        event EventHandler<ErrorEventArgs> Error;
 
         #endregion
 
-        void Email(String email, String message);
+        #region METHODS
 
-        void Upload(String name, String contentType, Stream file);
-        void Get(string url);
-        void Download(Uri url);
-        void Download(String id);
-        void Delete(string url);
+        void TryLogin();
+        Task Login();
+        Task<Response> BackupId(String name);
+        Task<Response> Upload(Progress bar);
+        Task<Response> Url(string id);
+        Task<DownloadStatus> Preview(String id, Progress bar);
+        Task<DownloadStatus> Download(String id, Progress bar);
+
+        #endregion
     }
 }
