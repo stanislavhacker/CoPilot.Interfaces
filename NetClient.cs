@@ -13,7 +13,6 @@ namespace CoPilot.Interfaces
     public enum DownloadStatus
     {
         Complete,
-        InProgress,
         Fail
     }
 
