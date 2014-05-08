@@ -9,8 +9,32 @@ using System.Threading;
 
 namespace CoPilot.Interfaces
 {
+    public enum ProgressPreferences 
+    {
+        AllowOnCelluralAndBatery,
+        AllowOnWifiAndBatery,
+        AllowOnWifiAndExternalPower
+    }
+
     public class Progress : INotifyPropertyChanged
     {
+        /// <summary>
+        /// Preferences
+        /// </summary>
+        private ProgressPreferences preferences = ProgressPreferences.AllowOnWifiAndExternalPower;
+        public ProgressPreferences Preferences
+        {
+            get
+            {
+                return preferences;
+            }
+            set
+            {
+                preferences = value;
+                RaisePropertyChanged();
+            }
+        }
+
         /// <summary>
         /// Size
         /// </summary>
