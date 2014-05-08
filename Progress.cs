@@ -174,8 +174,8 @@ namespace CoPilot.Interfaces
         /// <summary>
         /// Cancel
         /// </summary>
-        private CancellationToken cancel;
-        public CancellationToken Cancel
+        private CancellationTokenSource cancel;
+        public CancellationTokenSource Cancel
         {
             get
             {
