@@ -137,6 +137,24 @@ namespace CoPilot.Interfaces
             }
         }
 
+
+        /// <summary>
+        /// Is enabled
+        /// </summary>
+        private bool isEnabled = true;
+        public bool IsEnabled
+        {
+            get
+            {
+                return isEnabled;
+            }
+            set
+            {
+                isEnabled = value;
+                RaisePropertyChanged();
+            }
+        }
+
         /// <summary>
         /// Url
         /// </summary>
@@ -248,7 +266,6 @@ namespace CoPilot.Interfaces
         }
 
         #endregion
-
     }
 }
 

@@ -29,7 +29,7 @@ namespace CoPilot.Interfaces
 
         void TryLogin();
         Task Login();
-        Boolean Progress(Uri url);
+        Task<Boolean> Progress(Uri url);
         Task<Response> BackupId(String name);
         Task<Response> Upload(Progress bar);
         Task<Response> Url(string id);
