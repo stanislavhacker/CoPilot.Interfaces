@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -223,6 +224,43 @@ namespace CoPilot.Interfaces
             }
         }
 
+
+
+
+
+        /// <summary>
+        /// Stream
+        /// </summary>
+        private Stream stream;
+        public Stream Stream
+        {
+            get
+            {
+                return stream;
+            }
+            set
+            {
+                stream = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Is stream
+        /// </summary>
+        private bool isStream = false;
+        public bool IsStream
+        {
+            get
+            {
+                return isStream;
+            }
+            set
+            {
+                isStream = value;
+                RaisePropertyChanged();
+            }
+        }
 
         #region PROPERTY CHANGE
 
